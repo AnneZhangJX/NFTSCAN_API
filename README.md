@@ -5,6 +5,8 @@
 NFTSCAN对外开发NFT资产信息查询说明，一共有两个接口，第一个接口查询NFTSCAN当前收集的所有的合约项目，包含合约地址和项目基本信息。
 第二个接口可以通过合约地址查询某个项目下的所有NFT资产详细信息。
 
+IPFS查询NFT资产信息进行保存以后，需要提供一个接口能够通过合约地址+资产ID查询出对应的IPFS存储链接。由于NFT数据不规范性，部分项目的metadata未能查询成功，需要持续补充，nft_metadata_get字段为正常的项目可以批量查询进行保存，异常的需要等nftscan补充metadata。
+
 http://api.nftscan.com/nftmsg/
 
 ## 查询NFTSCAN已收录的NFT项目
@@ -38,6 +40,7 @@ nftproject/all
 | nft_platform_type | String | NFT项目类型 （1155/721）|
 | nft_platform_contract | String | NFT项目合约地址 |
 | nft_platform_describe | String | NFT项目简介 |
+| nft_metadata_get | int | 元数据获取状态(正常/异常) |
 | nft_metadata_status | int | 元数据保存状态(ipfs/其他) |
 | nft_is_ipfs | int | 是否从IPFS二次获取元数据 （是，否）|
 | nft_ipfs_svae | int | IPFS是否查询数据并进行保存（已保存，未保存，部分保存） |
